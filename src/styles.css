@@ -1,1 +1,48 @@
 /* You can add global styles to this file, and also import other style files */
+@import "tailwindcss";
+/* Define CSS variables for light and dark themes */
+:root {
+  --bg-color: #fff;
+  --text-color: #222;
+  --card-bg: #fff;
+  --border-color: #dee2e6;
+}
+[data-theme='dark'] {
+  --bg-color: #181a1b;
+  --text-color: #f1f1f1;
+  --card-bg: #23272b;
+  --border-color: #333;
+  --hover-color: #242a2e;
+}
+[data-theme='light'] {
+  --bg-color: #fff;
+  --text-color: #222;
+  --card-bg: #fff;
+  --border-color: #dee2e6;
+}
+
+/* Apply the background and text color to the body and html elements */
+body  {
+    background-color: yellow;
+}
+body, html {
+  background: var(--bg-color) !important;
+  color: var(--text-color) !important;
+  transition: background 0.3s, color 0.3s;
+}
+
+/* Style the card component with theme variables */
+.card {
+  background: var(--card-bg);
+  color: var(--text-color);
+  border-color: var(--border-color);
+}
+
+.service-checkbox:hover {
+    background-color: var(--hover-color) !important;
+}
+
+/* Additional styles for the theme switcher button */
+.theme-switcher .btn {
+  margin-bottom: 1rem;
+}

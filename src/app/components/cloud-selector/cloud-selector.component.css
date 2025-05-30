@@ -1,0 +1,21 @@
+    .service-checkbox {
+      display: flex;
+      align-items: center;
+      padding: 0.5rem;
+      border: 1px solid #dee2e6;
+      border-radius: 0.5rem;
+      margin: 0.5rem;
+      cursor: pointer;
+      transition: background-color 0.2s ease;
+    }
+    .service-checkbox:hover {
+      background-color: #f8f9fa;
+    }
+    .service-checkbox input[type="checkbox"] {
+      margin-right: 0.5rem;
+    }
+    .service-icon {
+      font-size: 1.2rem;
+      margin-right: 0.5rem;
+      color: #0d6efd;
+    }

@@ -1,0 +1,147 @@
+import { Injectable } from '@angular/core';
+import { CloudServiceItem } from '../models/cloud-service-model-item';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class CloudServicesListService {
+  constructor() { }
+
+  getServicesList(provider: string): CloudServiceItem[] {
+    switch (provider.toLowerCase()) {
+      case 'azure':
+        return [
+          { label: 'Azure Monitor', value: 'Azure Monitor', icon: 'fa-chart-line' },
+          { label: 'Azure Activity Log', value: 'Azure Activity Log', icon: 'fa-list-alt' },
+          { label: 'Azure Policy', value: 'Azure Policy', icon: 'fa-balance-scale' },
+          { label: 'Security Center', value: 'Security Center', icon: 'fa-shield-alt' },
+          { label: 'Custom agents / Scripts', value: 'Custom agents / Scripts', icon: 'fa-terminal' },
+          { label: 'Blob Storage', value: 'Blob Storage', icon: 'fa-database' },
+          { label: 'Azure Monitor Metrics Explorer', value: 'Azure Monitor Metrics Explorer', icon: 'fa-chart-bar' },
+          { label: 'Azure Monitor Alerts', value: 'Azure Monitor Alerts', icon: 'fa-bell' },
+          { label: 'Azure Monitor Dashboard', value: 'Azure Monitor Dashboard', icon: 'fa-tachometer-alt' },
+          { label: 'Power BI', value: 'Power BI', icon: 'fa-chart-pie' },
+          { label: 'Policy Compliance', value: 'Policy Compliance', icon: 'fa-check-circle' },
+          { label: 'Security Center Compliance', value: 'Security Center Compliance', icon: 'fa-shield-alt' },
+          { label: 'Azure Functions', value: 'Azure Functions', icon: 'fa-bolt' },
+          { label: 'Azure Automation', value: 'Azure Automation', icon: 'fa-robot' },
+          { label: 'Azure DevOps', value: 'Azure DevOps', icon: 'fa-project-diagram' },
+          { label: 'Well-Architected Framework', value: 'Well-Architected Framework', icon: 'fa-cubes' },
+          { label: 'Azure Virtual Machines (VMs)', value: 'Azure Virtual Machines (VMs)', icon: 'fa-server' },
+          { label: 'Azure Kubernetes Service (AKS)', value: 'Azure Kubernetes Service (AKS)', icon: 'fa-network-wired' },
+          { label: 'Azure SQL Database', value: 'Azure SQL Database', icon: 'fa-database' },
+          { label: 'Azure Cosmos DB', value: 'Azure Cosmos DB', icon: 'fa-globe' },
+          { label: 'Azure API Management', value: 'Azure API Management', icon: 'fa-cogs' },
+          { label: 'Azure Application Gateway', value: 'Azure Application Gateway', icon: 'fa-exchange-alt' },
+          { label: 'Azure Content Delivery Network (CDN)', value: 'Azure Content Delivery Network (CDN)', icon: 'fa-cloud' },
+          { label: 'Azure Event Grid', value: 'Azure Event Grid', icon: 'fa-stream' },
+          { label: 'Azure Event Hubs', value: 'Azure Event Hubs', icon: 'fa-hubspot' },
+          { label: 'Azure Logic Apps', value: 'Azure Logic Apps', icon: 'fa-project-diagram' },
+          { label: 'Azure Synapse Analytics', value: 'Azure Synapse Analytics', icon: 'fa-chart-area' },
+          { label: 'Azure App Service', value: 'Azure App Service', icon: 'fa-app-store' },
+          { label: 'Azure Virtual Network (VNet)', value: 'Azure Virtual Network (VNet)', icon: 'fa-network-wired' },
+          { label: 'Azure Active Directory (AD)', value: 'Azure Active Directory (AD)', icon: 'fa-users' },
+          { label: 'Azure Front Door', value: 'Azure Front Door', icon: 'fa-door-open' },
+          { label: 'Azure Bastion', value: 'Azure Bastion', icon: 'fa-shield-alt' },
+          { label: 'Azure Container Instances (ACI)', value: 'Azure Container Instances (ACI)', icon: 'fa-box' },
+          { label: 'Azure Virtual WAN', value: 'Azure Virtual WAN', icon: 'fa-project-diagram' },
+          { label: 'Azure Managed Disks', value: 'Azure Managed Disks', icon: 'fa-hdd' },
+          { label: 'Azure Blueprints', value: 'Azure Blueprints', icon: 'fa-drafting-compass' },
+          { label: 'Azure Arc', value: 'Azure Arc', icon: 'fa-archway' },
+          { label: 'Azure Data Factory', value: 'Azure Data Factory', icon: 'fa-industry' },
+          { label: 'Azure Key Vault', value: 'Azure Key Vault', icon: 'fa-key' },
+          { label: 'Azure Spring Cloud', value: 'Azure Spring Cloud', icon: 'fa-leaf' },
+          { label: 'Azure Logic Apps', value: 'Azure Logic Apps', icon: 'fa-project-diagram' }
+        ];
+      case 'aws':
+        return [
+          { label: 'CloudWatch', value: 'CloudWatch', icon: 'fa-eye' },
+          { label: 'CloudWatch Logs', value: 'CloudWatch Logs', icon: 'fa-file-alt' },
+          { label: 'CloudTrail', value: 'CloudTrail', icon: 'fa-shoe-prints' },
+          { label: 'Config', value: 'Config', icon: 'fa-cogs' },
+          { label: 'Custom agents / Scripts', value: 'Custom agents / Scripts', icon: 'fa-terminal' },
+          { label: 'S3', value: 'S3', icon: 'fa-box-archive' },
+          { label: 'CloudWatch Metrics Insights', value: 'CloudWatch Metrics Insights', icon: 'fa-chart-bar' },
+          { label: 'SNS', value: 'SNS', icon: 'fa-bell' },
+          { label: 'CloudWatch Dashboard', value: 'CloudWatch Dashboard', icon: 'fa-tachometer-alt' },
+          { label: 'QuickSight', value: 'QuickSight', icon: 'fa-chart-pie' },
+          { label: 'Config Rules', value: 'Config Rules', icon: 'fa-check-circle' },
+          { label: 'Trusted Advisor', value: 'Trusted Advisor', icon: 'fa-user-shield' },
+          { label: 'Lambda', value: 'Lambda', icon: 'fa-code' },
+          { label: 'Step Functions', value: 'Step Functions', icon: 'fa-random' },
+          { label: 'CloudFormation', value: 'CloudFormation', icon: 'fa-layer-group' },
+          { label: 'CodePipeline', value: 'CodePipeline', icon: 'fa-project-diagram' },
+          { label: 'Well-Architected Tool', value: 'Well-Architected Tool', icon: 'fa-cubes' },
+          { label: 'Elastic Load Balancing (ELB)', value: 'Elastic Load Balancing (ELB)', icon: 'fa-balance-scale' },
+          { label: 'EC2 (Elastic Compute Cloud)', value: 'EC2 (Elastic Compute Cloud)', icon: 'fa-server' },
+          { label: 'RDS (Relational Database Service)', value: 'RDS (Relational Database Service)', icon: 'fa-database' },
+          { label: 'DynamoDB', value: 'DynamoDB', icon: 'fa-table' },
+          { label: 'Elastic Beanstalk', value: 'Elastic Beanstalk', icon: 'fa-seedling' },
+          { label: 'EKS (Elastic Kubernetes Service)', value: 'EKS (Elastic Kubernetes Service)', icon: 'fa-network-wired' },
+          { label: 'ECS (Elastic Container Service)', value: 'ECS (Elastic Container Service)', icon: 'fa-boxes' },
+          { label: 'Kinesis', value: 'Kinesis', icon: 'fa-water' },
+          { label: 'Redshift', value: 'Redshift', icon: 'fa-rocket' },
+          { label: 'Elasticache', value: 'Elasticache', icon: 'fa-memory' },
+          { label: 'VPC (Virtual Private Cloud)', value: 'VPC (Virtual Private Cloud)', icon: 'fa-cloud' },
+          { label: 'IAM (Identity and Access Management)', value: 'IAM (Identity and Access Management)', icon: 'fa-user-lock' },
+          { label: 'Route 53', value: 'Route 53', icon: 'fa-route' },
+          { label: 'Lightsail', value: 'Lightsail', icon: 'fa-lightbulb' },
+          { label: 'App Mesh', value: 'App Mesh', icon: 'fa-project-diagram' },
+          { label: 'AWS Glue', value: 'AWS Glue', icon: 'fa-vial' },
+          { label: 'AWS Step Functions', value: 'AWS Step Functions', icon: 'fa-random' },
+          { label: 'AWS Secrets Manager', value: 'AWS Secrets Manager', icon: 'fa-user-secret' },
+          { label: 'AWS Fargate', value: 'AWS Fargate', icon: 'fa-ship' },
+          { label: 'AWS App Runner', value: 'AWS App Runner', icon: 'fa-running' },
+          { label: 'AWS Backup', value: 'AWS Backup', icon: 'fa-archive' },
+          { label: 'AWS Global Accelerator', value: 'AWS Global Accelerator', icon: 'fa-globe' },
+          { label: 'AWS Batch', value: 'AWS Batch', icon: 'fa-tasks' },
+          { label: 'AWS Direct Connect', value: 'AWS Direct Connect', icon: 'fa-exchange-alt' },
+          { label: 'AWS Elastic Transcoder', value: 'AWS Elastic Transcoder', icon: 'fa-film' }
+        ];
+      case 'gcp':
+        return [
+          { label: 'Cloud Monitoring', value: 'Cloud Monitoring', icon: 'fa-eye' },
+          { label: 'Cloud Logging', value: 'Cloud Logging', icon: 'fa-file-alt' },
+          { label: 'Cloud Audit Logs', value: 'Cloud Audit Logs', icon: 'fa-clipboard-list' },
+          { label: 'Custom agents / Scripts', value: 'Custom agents / Scripts', icon: 'fa-terminal' },
+          { label: 'Cloud Storage', value: 'Cloud Storage', icon: 'fa-database' },
+          { label: 'Cloud Operations', value: 'Cloud Operations', icon: 'fa-cogs' },
+          { label: 'Cloud Monitoring Alerts', value: 'Cloud Monitoring Alerts', icon: 'fa-bell' },
+          { label: 'Cloud Monitoring Dashboard', value: 'Cloud Monitoring Dashboard', icon: 'fa-tachometer-alt' },
+          { label: 'Data Studio', value: 'Data Studio', icon: 'fa-chart-pie' },
+          { label: 'Security Command Center', value: 'Security Command Center', icon: 'fa-shield-alt' },
+          { label: 'Cloud Functions', value: 'Cloud Functions', icon: 'fa-cloud' },
+          { label: 'Cloud Deployment Manager', value: 'Cloud Deployment Manager', icon: 'fa-layer-group' },
+          { label: 'Cloud Build', value: 'Cloud Build', icon: 'fa-tools' },
+          { label: 'Well-Architected Framework', value: 'Well-Architected Framework', icon: 'fa-cubes' },
+          { label: 'BigQuery', value: 'BigQuery', icon: 'fa-database' },
+          { label: 'Pub/Sub', value: 'Pub/Sub', icon: 'fa-broadcast-tower' },
+          { label: 'Compute Engine', value: 'Compute Engine', icon: 'fa-server' },
+          { label: 'Cloud SQL', value: 'Cloud SQL', icon: 'fa-database' },
+          { label: 'Cloud Spanner', value: 'Cloud Spanner', icon: 'fa-database' },
+          { label: 'Cloud Pub/Sub', value: 'Cloud Pub/Sub', icon: 'fa-broadcast-tower' },
+          { label: 'Cloud Run', value: 'Cloud Run', icon: 'fa-running' },
+          { label: 'Cloud Armor', value: 'Cloud Armor', icon: 'fa-shield-alt' },
+          { label: 'Cloud Load Balancing', value: 'Cloud Load Balancing', icon: 'fa-balance-scale' },
+          { label: 'Cloud CDN', value: 'Cloud CDN', icon: 'fa-cloud' },
+          { label: 'Cloud Interconnect', value: 'Cloud Interconnect', icon: 'fa-network-wired' },
+          { label: 'Vertex AI', value: 'Vertex AI', icon: 'fa-brain' },
+          { label: 'Cloud Endpoints', value: 'Cloud Endpoints', icon: 'fa-network-wired' },
+          { label: 'Firebase', value: 'Firebase', icon: 'fa-fire' },
+          { label: 'Cloud Composer', value: 'Cloud Composer', icon: 'fa-music' },
+          { label: 'Cloud Functions', value: 'Cloud Functions', icon: 'fa-cloud' },
+          { label: 'Memorystore', value: 'Memorystore', icon: 'fa-memory' },
+          { label: 'Cloud Identity', value: 'Cloud Identity', icon: 'fa-id-badge' },
+          { label: 'Cloud Scheduler', value: 'Cloud Scheduler', icon: 'fa-calendar-alt' },
+          { label: 'Cloud Tasks', value: 'Cloud Tasks', icon: 'fa-tasks' },
+          { label: 'Cloud Dataflow', value: 'Cloud Dataflow', icon: 'fa-water' },
+          { label: 'Cloud Dataproc', value: 'Cloud Dataproc', icon: 'fa-cogs' },
+          { label: 'Cloud TPU', value: 'Cloud TPU', icon: 'fa-microchip' },
+          { label: 'Cloud Filestore', value: 'Cloud Filestore', icon: 'fa-hdd' },
+          { label: 'Anthos', value: 'Anthos', icon: 'fa-cube' }
+        ];
+      default:
+        return [];
+    }
+  }
+}

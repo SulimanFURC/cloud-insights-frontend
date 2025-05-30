@@ -1,0 +1,113 @@
+<div class="container py-5">
+    <form [formGroup]="cloudForm" (ngSubmit)="onSubmit()">
+        <!-- Filters -->
+        <div class="row mb-4">
+            <div class="col-md-6">
+                <label for="cloudProvider" class="form-label">Select Cloud Provider</label>
+                <select class="form-select" id="cloudProvider" formControlName="cloudProvider"
+                    (change)="onProviderChange($event)">
+                    <option value="Azure">Azure</option>
+                    <option value="AWS">AWS</option>
+                    <option value="GCP">GCP</option>
+                </select>
+                <div *ngIf="cloudForm.get('cloudProvider')?.touched && cloudForm.get('cloudProvider')?.invalid"
+                    class="text-danger small">Cloud Provider is required.</div>
+            </div>
+            <div class="col-md-6">
+                <label for="experienceLevel" class="form-label">Select Experience Level</label>
+                <select class="form-select" id="experienceLevel" formControlName="experienceLevel">
+                    <option value="" disabled selected>Select Level</option>
+                    <option value="Beginner">Beginner</option>
+                    <option value="Intermediate">Intermediate</option>
+                    <option value="Advanced">Advanced</option>
+                </select>
+                <div *ngIf="cloudForm.get('experienceLevel')?.touched && cloudForm.get('experienceLevel')?.invalid"
+                    class="text-danger small">Experience Level is required.</div>
+            </div>
+        </div>
+
+        <!-- Services -->
+        <div class="mb-4">
+            <label class="form-label">Select Services</label>
+            <div class="d-flex flex-wrap">
+                <label class="service-checkbox" *ngFor="let service of servicesList">
+                    <input type="checkbox" [value]="service.value" (change)="onServiceChange($event)"
+                        [checked]="cloudForm.value.serviceList.includes(service.value)" />
+                    <i class="fa-solid service-icon" [ngClass]="service.icon"></i>
+                    {{ service.label }}
+                </label>
+            </div>
+            <div *ngIf="cloudForm.get('serviceList')?.touched && cloudForm.get('serviceList')?.invalid"
+                class="text-danger small">At least one service is required.</div>
+        </div>
+
+        <!-- Button -->
+        <div class="mb-4 text-center">
+            <button id="getDetailsBtn" class="btn btn-primary px-4 py-2" type="submit" [disabled]="cloudForm.invalid">
+                <i class="fa-solid fa-magnifying-glass"></i> Get Project Details
+            </button>
+
+        </div>
+    </form>
+
+    <!-- Project Card (optional, can be removed or shown after submit) -->
+    @if(!isLoading) {
+    <div class="row">
+        @for (idea of ideas; track $index) {
+        <div class="card shadow-sm col-lg-4 col-sm-12">
+            <div class="card-body">
+                <h5 class="card-title">{{idea.title}}</h5>
+                <p class="card-text">{{idea.description}}</p>
+                <div class="mb-3">
+                    <strong>Difficulty: </strong>
+                    <span class="text-warning">
+                        @for(star of [].constructor(idea.difficultyRatingStars); track $index) {
+                            <i class="fa-solid fa-star"></i>
+                        }
+                    </span>
+                </div>
+                <p><strong>Estimated Time: </strong> {{idea.estimatedTimeToComplete}}</p>
+                <p><strong>Why this project? </strong>{{idea.whyThisProject}} </p>
+                <h6>High-Level Steps:</h6>
+                <ul>
+                    @for (step of idea.highLevelSteps; track $index) {
+                    <li>{{step}}</li>
+                    }
+                </ul>
+                <h6>Cost Insights:</h6>
+                <p>{{idea.costInsights.generalConsiderations}}</p>
+                <ul>
+                    @for(priceing of idea.costInsights.officialPricingLinks; track $index) {
+                    <li>
+                        <a [href]="priceing.link" target="_blank">
+                           {{priceing.serviceName}}
+                        </a>
+                    </li>
+                    }
+                </ul>
+                <h6>Alternative Service Suggestions:</h6>
+                <ul>
+                    @for(alternate of idea.alternativeServiceSuggestions; track $index) {
+                    <li><strong>{{alternate.serviceName}}:</strong>
+                        {{alternate.reason}}
+                    </li>
+                    }
+                </ul>
+                <h6>Stretch Goals:</h6>
+                <ul>
+                    @for(goal of idea.stretchGoals; track $index) {
+                    <li>{{goal}}</li>
+                    }
+                </ul>
+            </div>
+        </div>
+        }
+    </div>
+    } @else {
+    <loading-skeleton></loading-skeleton>
+    }
+
+
+
+
+</div>
