@@ -1,13 +1,14 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ProjectIdeaRequest } from '../models/cloud-service-model-item';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
     providedIn: 'root'
 })
 export class CloudService {
 
-    private apiUrl = 'http://localhost:3000/api';
+    private apiUrl = environment.apiUrl;
     constructor(private http: HttpClient) { }
 
     getProjectIdeas(payload: ProjectIdeaRequest) {
